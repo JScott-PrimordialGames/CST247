@@ -1,0 +1,12 @@
+2021-02-21 21:07:47.2628 INFO Entering LoginController.DoLogin()
+2021-02-21 21:07:47.2978 INFO Parameters are: {"Username":"test","Password":"test"}
+2021-02-21 21:07:47.3703 INFO Exiting DoLogin() with pass
+2021-02-21 21:08:41.0093 INFO Entering LoginController.DoLogin()
+2021-02-21 21:08:41.0343 INFO Parameters are: {"Username":"fail","Password":"fail"}
+2021-02-21 21:08:41.1003 INFO Exiting DoLogin() with Login failed
+2021-02-21 21:20:32.8470 INFO Entering LoginController.DoLogin()
+2021-02-21 21:20:32.8745 INFO Parameters are: {"Username":"test","Password":"test"}
+2021-02-21 21:20:33.7872 INFO Exiting DoLogin() with pass
+2021-02-21 21:21:57.4516 INFO Entering LoginController.DoLogin()
+2021-02-21 21:21:57.4796 INFO Parameters are: {"Username":"primordial","Password":"Ageless"}
+2021-02-21 21:21:57.5526 INFO Exiting DoLogin() with Login failed

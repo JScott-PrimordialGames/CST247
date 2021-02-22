@@ -10,36 +10,22 @@ namespace Activity1Part3.Services.Data
 {
     public class SecurityDAO
     {
-        string querry = @"if exists(select * from Test.dbo.Users where username = @Username and password = @Password collate SQL_Latin1_General_CP1_CS_AS)
-                                        Begin
-                                            select 'true'
-                                        End
-                                        Else
-                                        Begin
-                                            select 'false'
-                                        End";
-        public bool FindByUser(UserModel user)
+        public bool FindByUser(Activity1Part3.Models.UserModel user)
         {
-            var con = new SqlConnection(ConfigurationManager.ConnectionStrings["local"].ConnectionString);
-            SqlCommand command = new SqlCommand(querry, con);
-              
-            command.Parameters.AddWithValue("@Username", user.Username);
-            command.Parameters.AddWithValue("@Password", user.Password);
+            SqlConnection conn = new SqlConnection("data source=(localdb)\\MSSQLLocalDB; database=Test; integrated security = SSPI");
+            SqlCommand cmnd = new SqlCommand("SELECT * FROM Users WHERE Username = '" + user.Username + "' AND Password = '" + user.Password + "'", conn);
 
-            con.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            if (reader[0].ToString() == "true")
+            conn.Open();
+            SqlDataReader reader = cmnd.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                con.Close();
                 return true;
             }
             else
             {
-                con.Close();
                 return false;
             }
-            
         }
 
     }

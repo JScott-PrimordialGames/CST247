@@ -17,5 +17,11 @@ namespace Activity1Part3.Models
         [Display(Name = "Password")]
         [StringLength(20, MinimumLength = 4)]
         public string Password { get; set; }
+
+        public UserModel(string username, string password)
+        {
+            this.Username = username;
+            this.Password = password;
+        }
     }
 }

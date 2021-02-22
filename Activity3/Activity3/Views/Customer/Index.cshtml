@@ -1,0 +1,38 @@
+﻿@model Tuple<List<Activity3.Models.CustomerModel>, Activity3.Models.CustomerModel>
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions();
+    ajaxOptions.HttpMethod = "POST";
+    ajaxOptions.InsertionMode = InsertionMode.Replace;
+    ajaxOptions.UpdateTargetId = "customerinfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+    <div id="customerinfo"></div>
+
+    @Html.Label("Please Select a customer");
+    @using (Ajax.BeginForm("OnSelectCustomer", "Customer", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "customerinfo" }, new { id = "myform" }))
+    {
+        for (int i = 0; i < Model.Item1.Count; i++)
+        {
+            <input type="radio" value="@Model.Item1[i].Id" name="Customer" id="CustomerId" onchange="this.form.submit(@Model.Item1[i].Id)" /> <label for="CustomerId">@Model.Item1[i].Name</label>
+            <br />
+            @Html.RadioButtonFor(Model => Model.Item1[i].Id, Model.Item1[i].Id, new { name = "Customer", id = "CustomerId", onchange = "this.form.submit(@Model.Item[i].Id)" });
+            @Html.Label(Model.Item1[i].Name);
+            <br />
+        }
+
+    }
+
+</body>
+</html>
